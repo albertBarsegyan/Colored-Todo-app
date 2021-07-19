@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import handleTodoAdd from '../helpers/handleTodoAdd';
+import FilterContainer from './FilterContainer';
 import Input from './Input';
 import TodoItem from './TodoItem';
 
@@ -27,11 +28,14 @@ export default class TodoContainer extends Component {
               placeholder="Add todo and press Enter."
             />
           </div>
+
+          <FilterContainer />
           <div className="mt-5">
             <ul>
-              {todoList.map((todoText) => (
-                <TodoItem value={todoText} />
-              ))}
+              {todoList.map((todoObject) => {
+                const { inputValue, id } = todoObject;
+                return <TodoItem value={inputValue} key={id} />;
+              })}
             </ul>
           </div>
         </div>

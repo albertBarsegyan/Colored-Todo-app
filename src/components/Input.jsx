@@ -25,7 +25,5 @@ Input.propTypes = {
   placeholder: PropTypes.string.isRequired,
 };
 Input.defaultProps = {
-  onChange: () => {
-    console.log('event');
-  },
+  onChange: null,
 };
