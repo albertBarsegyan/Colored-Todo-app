@@ -39,8 +39,8 @@ export default class TodoItem extends Component {
                 className={isActive}
                 value={value}
                 onBlur={(e) => {
-                  this.setState((prevState) => ({ isEditable: !prevState.isEditable }));
                   this.props.savedValue(e.target.value);
+                  this.setState((prevState) => ({ isEditable: !prevState.isEditable }));
                 }}
                 onChange={(e) => this.props.savedValue(e.target.value)}
               />

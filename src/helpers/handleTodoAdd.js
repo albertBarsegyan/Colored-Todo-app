@@ -5,8 +5,13 @@ export default function handleTodoAdd(e, targetState) {
       id: Date.now(),
       isActive: false,
     };
-    this.setState({ [targetState]: [...this.state[targetState], todoObject] });
-    e.target.value = '';
-    console.log('enter pressed in todo inpute ->', this.state[targetState]);
+    Promise.resolve('success')
+      .then(() => {
+        this.setState({ [targetState]: [...this.state[targetState], todoObject] });
+        return this.state[targetState];
+      })
+      .then((data) => {
+        localStorage.setItem([targetState], JSON.stringify(data));
+      });
   }
 }

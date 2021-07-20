@@ -7,6 +7,13 @@ export default function handleComplete(id, stateList) {
     }
     return item;
   });
-  this.setState({ [stateList]: [...edited] });
-  console.log(this.state[stateList]);
+
+  Promise.resolve('success')
+    .then(() => {
+      this.setState({ [stateList]: [...edited] });
+      return this.state[stateList];
+    })
+    .then((data) => {
+      localStorage.setItem([stateList], JSON.stringify(data));
+    });
 }

@@ -32,6 +32,11 @@ export default class TodoContainer extends Component {
     this.handleActive = handleActive.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({ todoList: [...JSON.parse(localStorage.getItem('todoList'))] });
+    // console.log(this.state.todoList);
+  }
+
   render() {
     return (
       <div className="relative">

@@ -8,5 +8,5 @@ export default function handleSavedData(id, stateList, savedInputValue) {
     return item;
   });
   this.setState({ [stateList]: editedList });
-  console.log('saved data handler ->');
+  console.log('handle saved data -> ', this.state[stateList]);
 }
