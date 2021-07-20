@@ -3,7 +3,7 @@ export default function handleTodoAdd(e, targetState) {
     const todoObject = {
       inputValue: e.target.value,
       id: Date.now(),
-      isDone: false,
+      isActive: false,
     };
     this.setState({ [targetState]: [...this.state[targetState], todoObject] });
     e.target.value = '';

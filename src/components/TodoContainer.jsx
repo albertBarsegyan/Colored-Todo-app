@@ -18,7 +18,7 @@ export default class TodoContainer extends Component {
     const { todoList } = this.state;
     return (
       <div className="relative">
-        <div className="flex flex-col items-center justify-center absolute top-40 left-1/2 transform -translate-x-1/2">
+        <div className="w-1/2 flex flex-col items-center justify-center absolute top-40 left-1/2 transform -translate-x-1/2">
           <div className="w-full">
             <Input
               onKeyPress={(e) => {
@@ -33,8 +33,8 @@ export default class TodoContainer extends Component {
           <div className="mt-5">
             <ul>
               {todoList.map((todoObject) => {
-                const { inputValue, id } = todoObject;
-                return <TodoItem value={inputValue} key={id} />;
+                const { inputValue, id, isActive } = todoObject;
+                return <TodoItem value={inputValue} key={id} isActive={isActive} />;
               })}
             </ul>
           </div>
