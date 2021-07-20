@@ -3,30 +3,16 @@ import Button from './Button';
 
 export default class TodoItemButtons extends Component {
   render() {
+    const { handleEdit, handleComplete, handleDelete } = this.props;
     return (
       <div>
-        <Button
-          customColor="blue"
-          onClick={() => {
-            console.log('edit button click->');
-          }}
-        >
+        <Button customColor="blue" onClick={handleEdit}>
           Edit
         </Button>
-        <Button
-          customColor="green"
-          onClick={() => {
-            console.log('complete button click->');
-          }}
-        >
+        <Button customColor="green" onClick={handleComplete}>
           Complete
         </Button>
-        <Button
-          customColor="red"
-          onClick={() => {
-            console.log('delete button click->');
-          }}
-        >
+        <Button customColor="red" onClick={handleDelete}>
           Delete
         </Button>
       </div>

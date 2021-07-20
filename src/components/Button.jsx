@@ -18,5 +18,10 @@ export default class Button extends Component {
 Button.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   customColor: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+};
+Button.defaultProps = {
+  onClick: () => {
+    console.log('button def');
+  },
 };
