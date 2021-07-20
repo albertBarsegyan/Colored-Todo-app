@@ -1,3 +1,3 @@
-export default function handleAll(stateName) {
+export default function handleAll(e, stateName) {
   this.setState({ [stateName]: 'all' });
 }

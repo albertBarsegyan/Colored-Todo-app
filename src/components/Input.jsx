@@ -13,7 +13,7 @@ export default class Input extends Component {
           type="text"
           placeholder={placeholder}
           onChange={onChange}
-          className={`w-full text-xl border border-${customColor}-500 px-4 py-2 text-${customColor}-500 bg-transparent placeholder-${customColor}-500`}
+          className={`block w-full text-xl border border-${customColor}-500 px-4 py-2 text-${customColor}-500 bg-transparent placeholder-${customColor}-500`}
         />
       </div>
     );

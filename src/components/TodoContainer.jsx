@@ -52,8 +52,8 @@ export default class TodoContainer extends Component {
           </div>
 
           <FilterContainer
-            handleAll={() => {
-              this.handleAll('filterType');
+            handleAll={(e) => {
+              this.handleAll(e, 'filterType');
             }}
             handleCompleted={() => {
               this.handleCompleted('filterType');

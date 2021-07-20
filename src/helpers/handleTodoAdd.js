@@ -13,5 +13,6 @@ export default function handleTodoAdd(e, targetState) {
       .then((data) => {
         localStorage.setItem([targetState], JSON.stringify(data));
       });
+    e.target.value = '';
   }
 }

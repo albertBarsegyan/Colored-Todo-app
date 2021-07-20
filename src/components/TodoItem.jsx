@@ -37,10 +37,15 @@ export default class TodoItem extends Component {
               <input
                 type="text"
                 className={isActive}
+                placeholder="Add todo."
                 value={value}
+                onFocus={() => {
+                  this.setState((prev) => ({ insideInput: !prev.insideInput }));
+                }}
                 onBlur={(e) => {
-                  this.props.savedValue(e.target.value);
                   this.setState((prevState) => ({ isEditable: !prevState.isEditable }));
+                  this.props.savedValue(e.target.value);
+                  console.log(this.state.isEditable, 'inside onBlur');
                 }}
                 onChange={(e) => this.props.savedValue(e.target.value)}
               />
