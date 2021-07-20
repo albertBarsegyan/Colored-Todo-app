@@ -33,8 +33,9 @@ export default class TodoContainer extends Component {
   }
 
   componentDidMount() {
-    this.setState({ todoList: [...JSON.parse(localStorage.getItem('todoList'))] });
-    // console.log(this.state.todoList);
+    if (localStorage.getItem('todoList')) {
+      this.setState({ todoList: [...JSON.parse(localStorage.getItem('todoList'))] });
+    }
   }
 
   render() {
@@ -68,9 +69,7 @@ export default class TodoContainer extends Component {
                 const { inputValue, id, isActive } = todoObject;
                 return (
                   <TodoItem
-                    savedValue={(savedInputData) =>
-                      this.handleSavedData(id, 'todoList', savedInputData)
-                    }
+                    savedValue={(savedInputData) => this.handleSavedData(id, 'todoList', savedInputData)}
                     handleDelete={() => {
                       this.handleDelete(id, 'todoList');
                     }}
