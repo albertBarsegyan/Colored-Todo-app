@@ -19,6 +19,10 @@ export default class TodoContainer extends Component {
     this.state = {
       todoList: [],
       filterType: 'all',
+      // filter buttons state
+      isClickedAll: true,
+      isClickedCompleted: false,
+      isClickedActive: false,
     };
     this.handleTodoAdd = handleTodoAdd.bind(this);
     this.handleDelete = handleDelete.bind(this);
@@ -39,6 +43,7 @@ export default class TodoContainer extends Component {
   }
 
   render() {
+    const { isClickedActive, isClickedCompleted, isClickedAll } = this.state;
     return (
       <div className="relative">
         <div className="w-1/2 flex flex-col items-center justify-center absolute top-40 left-1/2 transform -translate-x-1/2">
@@ -53,14 +58,32 @@ export default class TodoContainer extends Component {
           </div>
 
           <FilterContainer
-            handleAll={(e) => {
-              this.handleAll(e, 'filterType');
+            isClickedAll={isClickedAll}
+            isClickedCompleted={isClickedCompleted}
+            isClickedActive={isClickedActive}
+            handleAll={() => {
+              this.handleAll('filterType');
+              this.setState({
+                isClickedAll: true,
+                isClickedCompleted: false,
+                isClickedActive: false,
+              });
             }}
             handleCompleted={() => {
               this.handleCompleted('filterType');
+              this.setState({
+                isClickedAll: false,
+                isClickedCompleted: true,
+                isClickedActive: false,
+              });
             }}
             handleActive={() => {
               this.handleActive('filterType');
+              this.setState({
+                isClickedAll: false,
+                isClickedCompleted: false,
+                isClickedActive: true,
+              });
             }}
           />
           <div className="mt-5">
@@ -69,7 +92,9 @@ export default class TodoContainer extends Component {
                 const { inputValue, id, isActive } = todoObject;
                 return (
                   <TodoItem
-                    savedValue={(savedInputData) => this.handleSavedData(id, 'todoList', savedInputData)}
+                    savedValue={(savedInputData) =>
+                      this.handleSavedData(id, 'todoList', savedInputData)
+                    }
                     handleDelete={() => {
                       this.handleDelete(id, 'todoList');
                     }}

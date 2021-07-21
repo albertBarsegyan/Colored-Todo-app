@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { Component, createRef } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import TodoItemButtons from './TodoItemButtons';
@@ -10,12 +10,13 @@ export default class TodoItem extends Component {
     super(props);
     this.state = {
       isEditable: false,
+      editButtonName: 'Edit',
     };
   }
 
   render() {
     const { value, isDone, handleDelete, handleComplete } = this.props;
-
+    const { editButtonName } = this.state;
     const { isEditable } = this.state;
     const isActive = classNames({
       'block w-80  border px-4 py-2 bg-transparent break-all duration-150': true,
@@ -39,10 +40,8 @@ export default class TodoItem extends Component {
                 className={isActive}
                 placeholder="Add todo."
                 value={value}
-                onFocus={() => {
-                  this.setState((prev) => ({ insideInput: !prev.insideInput }));
-                }}
                 onBlur={(e) => {
+                  e.stopPropagation();
                   this.setState((prevState) => ({ isEditable: !prevState.isEditable }));
                   this.props.savedValue(e.target.value);
                   console.log(this.state.isEditable, 'inside onBlur');
@@ -57,6 +56,7 @@ export default class TodoItem extends Component {
             handleEdit={(e) => {
               this.handleEditor(e, 'isEditable');
             }}
+            editButtonName={editButtonName}
             handleComplete={handleComplete}
             handleDelete={handleDelete}
           />
