@@ -40,12 +40,12 @@ export default class TodoItem extends Component {
                 className={isActive}
                 placeholder="Add todo."
                 value={value}
-                onBlur={(e) => {
-                  e.stopPropagation();
-                  this.setState((prevState) => ({ isEditable: !prevState.isEditable }));
-                  this.props.savedValue(e.target.value);
-                  console.log(this.state.isEditable, 'inside onBlur');
-                }}
+                // onBlur={(e) => {
+                 
+                //   this.setState((prevState) => ({ isEditable: !prevState.isEditable }));
+                //   this.props.savedValue(e.target.value);
+                //   console.log(this.state.isEditable, 'inside onBlur');
+                // }}
                 onChange={(e) => this.props.savedValue(e.target.value)}
               />
             ) : (
