@@ -1,12 +1,15 @@
-#Todo colored
+# Todo colored
 
 
 <center>I present to you</center>
-* Colored todo list.  
-* More understandable
-* Data saved in local storage
-* Todo list will never forget your todo (even though page reloading)
 
+
+- Colored todo list.  
+- More understandable
+- Data saved in local storage
+- Todo list will never forget your todo (even though page reloading)
+
+---
 
 <center>Ui of todo list</center>
 
