@@ -12,12 +12,12 @@ export default class TodoItem extends Component {
       isEditable: false,
       editButtonName: 'Edit',
     };
+    this.handleEditor = handleEditor.bind(this);
   }
 
   render() {
     const { value, isDone, handleDelete, handleComplete } = this.props;
-    const { editButtonName } = this.state;
-    const { isEditable } = this.state;
+    const { isEditable, editButtonName } = this.state;
     const isActive = classNames({
       'block w-80  border px-4 py-2 bg-transparent break-all duration-150': true,
       'border-blue-500': !isDone,
@@ -29,7 +29,7 @@ export default class TodoItem extends Component {
       'text-xl': !isEditable,
       'text-4xl': isEditable,
     });
-    this.handleEditor = handleEditor.bind(this);
+
     return (
       <li className="my-4">
         <div className="flex items-center justify-center">
@@ -40,12 +40,6 @@ export default class TodoItem extends Component {
                 className={isActive}
                 placeholder="Add todo."
                 value={value}
-                // onBlur={(e) => {
-                 
-                //   this.setState((prevState) => ({ isEditable: !prevState.isEditable }));
-                //   this.props.savedValue(e.target.value);
-                //   console.log(this.state.isEditable, 'inside onBlur');
-                // }}
                 onChange={(e) => this.props.savedValue(e.target.value)}
               />
             ) : (

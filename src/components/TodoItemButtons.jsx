@@ -22,6 +22,9 @@ export default class TodoItemButtons extends Component {
 }
 TodoItemButtons.propTypes = {
   editButtonName: PropTypes.string,
+  handleEdit: PropTypes.func.isRequired,
+  handleComplete: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 TodoItemButtons.defaultProps = {
   editButtonName: 'Edit',

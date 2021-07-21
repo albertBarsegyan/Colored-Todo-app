@@ -7,6 +7,13 @@ export default function handleSavedData(id, stateList, savedInputValue) {
     }
     return item;
   });
-  this.setState({ [stateList]: editedList });
-  console.log('handle saved data -> ', this.state[stateList]);
+
+  Promise.resolve('success')
+    .then(() => {
+      this.setState({ [stateList]: editedList });
+      return this.state[stateList];
+    })
+    .then((data) => {
+      localStorage.setItem([stateList], JSON.stringify(data));
+    });
 }

@@ -1,10 +1,13 @@
 export default function handleEditor(e, stateName) {
-  this.setState((prevState) => ({ [stateName]: !prevState[stateName] }));
-  this.setState((prevState) => {
-    // if (condition) {
-    // }
+  if (this.state.editButtonName === 'Save') {
+    this.setState({ [stateName]: false });
+  }
+  if (this.state.editButtonName === 'Edit') {
+    this.setState({ [stateName]: true });
+  }
+
+  this.setState(() => {
     if (this.state[stateName] !== false) {
-      console.log('SAVE');
       return { editButtonName: 'Edit' };
     }
     return { editButtonName: 'Save' };

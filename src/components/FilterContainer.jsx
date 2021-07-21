@@ -38,4 +38,7 @@ FilterContainer.propTypes = {
   handleAll: PropTypes.func.isRequired,
   handleCompleted: PropTypes.func.isRequired,
   handleActive: PropTypes.func.isRequired,
+  isClickedActive: PropTypes.bool.isRequired,
+  isClickedCompleted: PropTypes.bool.isRequired,
+  isClickedAll: PropTypes.bool.isRequired,
 };

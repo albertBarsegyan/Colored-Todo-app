@@ -9,6 +9,8 @@ import handleDelete from '../helpers/handleDelete';
 import handleSavedData from '../helpers/handleSavedData';
 
 import handleTodoAdd from '../helpers/handleTodoAdd';
+import setAllComplete from '../helpers/setAllComplete';
+import Button from './Button';
 import FilterContainer from './FilterContainer';
 import Input from './Input';
 import TodoItem from './TodoItem';
@@ -23,6 +25,7 @@ export default class TodoContainer extends Component {
       isClickedAll: true,
       isClickedCompleted: false,
       isClickedActive: false,
+      allComplete: 'Set all Complete',
     };
     this.handleTodoAdd = handleTodoAdd.bind(this);
     this.handleDelete = handleDelete.bind(this);
@@ -34,6 +37,7 @@ export default class TodoContainer extends Component {
     this.handleAll = handleAll.bind(this);
     this.handleCompleted = handleCompleted.bind(this);
     this.handleActive = handleActive.bind(this);
+    this.setAllComplete = setAllComplete.bind(this);
   }
 
   componentDidMount() {
@@ -43,18 +47,28 @@ export default class TodoContainer extends Component {
   }
 
   render() {
-    const { isClickedActive, isClickedCompleted, isClickedAll } = this.state;
+    const { isClickedActive, isClickedCompleted, isClickedAll, allComplete } = this.state;
     return (
       <div className="relative">
         <div className="w-1/2 flex flex-col items-center justify-center absolute top-40 left-1/2 transform -translate-x-1/2">
-          <div className="w-full">
-            <Input
-              onKeyPress={(e) => {
-                this.handleTodoAdd(e, 'todoList');
-              }}
-              customColor="indigo"
-              placeholder="Add todo and press Enter."
-            />
+          <div className="w-full flex flex-row items-center justify-center">
+            <div>
+              <Input
+                onKeyPress={(e) => {
+                  this.handleTodoAdd(e, 'todoList');
+                }}
+                customColor="indigo"
+                placeholder="Add todo and press Enter."
+              />
+            </div>
+            <div>
+              <Button
+                customColor="pink"
+                onClick={() => this.setAllComplete('todoList', 'isActive')}
+              >
+                {allComplete}
+              </Button>
+            </div>
           </div>
 
           <FilterContainer
@@ -92,9 +106,7 @@ export default class TodoContainer extends Component {
                 const { inputValue, id, isActive } = todoObject;
                 return (
                   <TodoItem
-                    savedValue={(savedInputData) =>
-                      this.handleSavedData(id, 'todoList', savedInputData)
-                    }
+                    savedValue={(savedInputData) => this.handleSavedData(id, 'todoList', savedInputData)}
                     handleDelete={() => {
                       this.handleDelete(id, 'todoList');
                     }}

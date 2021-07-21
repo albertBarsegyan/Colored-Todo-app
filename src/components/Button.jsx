@@ -28,7 +28,7 @@ Button.propTypes = {
 };
 Button.defaultProps = {
   onClick: () => {
-    console.log('button def');
+    console.log('button default');
   },
   isClicked: false,
 };

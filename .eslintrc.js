@@ -9,13 +9,14 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['prettier'],
+  plugins: ['react', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
     'react/prefer-stateless-function': 'off',
     'react/jsx-filename-extension': 'off',
     'linebreak-style': 'off',
     'react/no-unused-state': 'off',
+    'object-curly-newline': 'off',
     indent: 'off',
   },
 };
